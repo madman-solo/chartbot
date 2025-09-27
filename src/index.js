@@ -23,7 +23,10 @@ const show = async (e) => {
   try {
     if (e.key === 'Enter' || e.type === 'click') {  // 仅在按回车时发送
       const inputvalue = input.value
-      const res = await axios.post('http://127.0.0.1:3400/api/chat', {
+      // const res = await axios.post('http://127.0.0.1:3400/api/chat', {
+      //   message: inputvalue
+      // })
+      const res = await axios.post('https://chartbot-oepeykmdyp.cn-hangzhou.fcapp.run', {
         message: inputvalue
       })
       console.log(res);

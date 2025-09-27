@@ -5,8 +5,7 @@ const cors = require('cors')
 require('dotenv').config(); // 仅本地开发时使用，部署时会被环境变量覆盖
 app.use(cors())
 app.use(express.json())
-// 替换为你的API Key
-// const apikey = `bce-v3/ALTAK-3w8FlwqtMBWeSPEJ9Ugy0/42784748a4f0d011c4401b55d81a353bd158ac4a`
+
 const apikey = process.env.QIANFAN_API_KEY
 // 千帆模型的API端点：
 const apiurl = 'https://qianfan.baidubce.com/v2/chat/completions'
@@ -33,7 +32,6 @@ app.post('/api/chat', async (req, res) => {
         'Authorization': `Bearer ${apikey}`
       }
     })
-    // const reply = apires.data.choices[0].message.content;
     const reply = apires.data.choices[0].message.content
 
     // 将回复存入消息列表
@@ -45,6 +43,18 @@ app.post('/api/chat', async (req, res) => {
     res.status(500).json({ error: '服务器错误' });
   }
 })
-app.listen(3400, () => {
-  console.log('服务器运行在http://')
-})
+// app.listen(3400, () => {
+//   console.log('服务器运行在http://')
+// })
+
+// 云函数入口，适配阿里云函数计算
+exports.handler = async (req, resp) => {
+  // 处理HTTP请求
+  return new Promise((resolve, reject) => {
+    app(req, {
+      end: (data) => resolve(data),
+      json: (data) => resolve(data),
+      status: (code) => ({ json: (data) => resolve({ statusCode: code, ...data }) })
+    });
+  });
+};

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHAT问答</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 初始化样式 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset.css@2.0.0/reset.min.css">
+  <link rel="stylesheet" href="./index.css">
+
+</head>
+
+<body>
+  <!--  Axios -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.4.0/axios.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+  <!-- 大页面：中间有个大对话框，
+     对话框中用户输入文字，
+     文字发送到后端请求文心一言API并返回数据 -->
+  <div class="container">
+    <!-- 头部 -->
+    <div class="top">
+      <div class="graph-container">
+        <div class="avatar-container">
+          <img src="./image/五2.jpg" alt="avatar">
+          <label for="upload">更换背景图片</label>
+          <input type="file" id="upload" class="img-upload" style="display: none;">
+          <div class="check">确定</div>
+        </div>
+      </div>
+      <div class="chart_name">
+        <h3>你好，我的朋友</h3>
+      </div>
+      <!-- 聊天区域 -->
+      <div class="chat" style="display: none;">
+        <ul class="chat_list">
+
+        </ul>
+      </div>
+      <!-- 底部固定 -->
+      <div class="bottom_div">
+        <!-- 发送消息 -->
+        <div class="send_box">
+          <div class="input_bg">
+            <!-- <input class="chat_input" type="text" placeholder="发消息输入"> -->
+            <textarea class="chat_input" placeholder="发消息输入"></textarea>
+            <button class="send-btn">发送</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+    <script src="./image.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+/*  */
+/* 基础样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f5f7fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-bottom: 100px;
+  /* 避免内容被输入框遮挡 */
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 头部样式 */
+.top {
+  text-align: center;
+}
+
+.graph-container {
+  width: 100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: contain;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.avatar-container {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.avatar-container img {
+  display: block;
+  margin: 0 auto;
+}
+
+.avatar-container label {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.avatar-container .check {
+  margin-top: 5px;
+  font-size: 12px;
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.graph-container {
+  transition: all 0.3s ease;
+  /* 平滑过渡动画 */
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chart_name h3 {
+  font-size: 26px;
+  color: #333;
+  font-weight: 600;
+  margin-top: 200px;
+}
+
+/* 聊天容器 */
+.chat {
+  border: 1px solid #dbdbdb;
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  min-height: 400px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 聊天列表 */
+ul.chat_list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 10px;
+}
+
+/* 消息样式 */
+li {
+  max-width: 70%;
+  padding: 10px 10px;
+  border-radius: 18px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+/* 左侧消息（AI）- 从左边开始 */
+li.left {
+  align-self: flex-start;
+  background-color: #f0f2f5;
+  color: #333;
+  border-bottom-left-radius: 5px;
+}
+
+/* 右侧消息（用户）- 位于最右边 */
+li.right {
+  align-self: flex-end;
+  background-color: #0078d4;
+  color: white;
+  border-bottom-right-radius: 5px;
+}
+
+/* 输入区域 */
+.input_bg {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px 30px;
+  /* 左右外间距30px */
+  background: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+  z-index: 999;
+}
+
+.chat_input {
+  width: calc(100% - 80px);
+  /* 减去按钮宽度 */
+  height: 60px;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  resize: none;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.chat_input:focus {
+  outline: none;
+  border-color: #0078d4;
+  box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.2);
+}
+
+.send-btn {
+  width: 70px;
+  height: 60px;
+  margin-left: 10px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 500;
+}
+
+.send-btn:hover {
+  background: linear-gradient(135deg, #3367d6 0%, #2855b9 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(66, 133, 244, 0.4);
+}
+
+
+.send-btn:active {
+  background: linear-gradient(135deg, #2855b9 0%, #1e40af 100%);
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
+}

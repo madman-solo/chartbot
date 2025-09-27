@@ -5,6 +5,7 @@ const creator = 'crazy-man'
 let newfile = null
 let selectedImageUrl = null;
 let galleryVisible = false;
+const savedUrl = presetImages[0];
 
 // 创建缩略图容器
 const galleryContainer = document.createElement('div');
@@ -89,6 +90,22 @@ document.querySelector('#upload').addEventListener('click', function () {
     renderPresetThumbnails();
   }
 })
+// 二. 本地文件选择（保留原有功能，可选）
+// 如果需要完全移除本地文件选择，可删除这段代码
+document.querySelector('#upload').addEventListener('change', function () {
+  // 1.获取选择的文件
+  newfile = this.files[0];
+  if (!newfile) return;
+
+  // 2.本地预览
+  const url = URL.createObjectURL(newfile);
+  selectedImageUrl = url; // 更新选中的图片URL
+
+  url && (document.querySelector('img').src = url);
+  if (url) {
+    updateBackground(url);
+  }
+});
 // 二.保存图片
 document.querySelector(".check").addEventListener('click', function () {
   // 检查是否有选中的图片
@@ -105,10 +122,10 @@ document.querySelector(".check").addEventListener('click', function () {
     alert('预设图片已保存');
     return;
   }
-  // // 1.创建formData对象：
-  // const data = new FormData()
-  // data.append('avatar', newfile)
-  // data.append('creator', creator)
+  // 1.创建formData对象：
+  const data = new FormData()
+  data.append('avatar', newfile)
+  data.append('creator', creator)
   // 2.上传图片：
   axios({
     url: 'https://hmajax.itheima.net/api/avatar',
@@ -122,5 +139,12 @@ document.querySelector(".check").addEventListener('click', function () {
     localStorage.setItem('avatar', url)
   })
 })
-const url = localStorage.getItem('avatar')
-url && (document.querySelector('img').src = url)
+// const url = localStorage.getItem('avatar')
+// url && (document.querySelector('img').src = url)
+// 页面加载时恢复保存的图片
+savedUrl = localStorage.getItem('avatar');
+if (savedUrl) {
+  document.querySelector('img').src = savedUrl;
+  updateBackground(savedUrl);
+}
+
